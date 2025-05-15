@@ -3,18 +3,18 @@ import streamlit as st
 import pandas as pd
 
 
-st.title("Welcome to Pincode Helper")
+st.title("PINCODE SEARCH")
 
-pin = st.text_input("Enter the pin code: ")
+pin=st.text_input("Enter the pin code")
 
 if pin:
-    url = f"https://api.postalpincode.in/pincode/{pin}"
+    url=f"https://api.postalpincode.in/pincode/{pin}"
     try:
         response=requests.get(url)
-        if response.status_code == 200:
+        if response.status_code==200:
             data=response.json()
-            if data[0]['Status'] == 'Success':
-                selected = st.selectbox("Select What you want", options=[
+            if data[0]['Status']=='Success':
+                selected=st.selectbox("Select What you want", options=[
                     'Post Office Name', 'BranchType', 'Delivery Status', 'State', 'District'])
 
                 post_offices=data[0]['PostOffice']
